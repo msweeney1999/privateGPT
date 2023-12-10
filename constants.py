@@ -16,7 +16,7 @@ EMBEDDINGS_MODEL_NAME="all-MiniLM-L6-v2"
 MODEL_N_CTX=1000
 MODEL_N_BATCH=8
 TARGET_SOURCE_CHUNKS=4
-SOURCE_DIRECTORY = "/content/privateGPT/source_documents"
+SOURCE_DIRECTORY = "/content/drive/My Drive/privateGPT/source_documents"
 
 # Define the Chroma settings
 CHROMA_SETTINGS = Settings(

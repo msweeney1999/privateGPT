@@ -25,15 +25,16 @@ from langchain.vectorstores import Chroma
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.docstore.document import Document
 from constants import CHROMA_SETTINGS
+from constants import *
 
-
+PERSIST_DIRECTORY
 load_dotenv()
 
 
 # Load environment variables
-persist_directory = os.environ.get('PERSIST_DIRECTORY')
-source_directory = "/content/privateGPT/source_documents/" # os.environ.get('SOURCE_DIRECTORY', 'source_documents')
-embeddings_model_name = os.environ.get('EMBEDDINGS_MODEL_NAME')
+persist_directory = PERSIST_DIRECTORY #os.environ.get('PERSIST_DIRECTORY')
+source_directory = SOURCE_DIRECTORY # "/content/privateGPT/source_documents/" # os.environ.get('SOURCE_DIRECTORY', 'source_documents')
+embeddings_model_name = EMBEDDINGS_MODEL_NAME # os.environ.get('EMBEDDINGS_MODEL_NAME')
 chunk_size = 500
 chunk_overlap = 50
 

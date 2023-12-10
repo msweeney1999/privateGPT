@@ -8,17 +8,18 @@ from langchain.llms import GPT4All, LlamaCpp
 import os
 import argparse
 import time
+from constants import *
 
 load_dotenv()
 
-embeddings_model_name = os.environ.get("EMBEDDINGS_MODEL_NAME")
-persist_directory = os.environ.get('PERSIST_DIRECTORY')
+embeddings_model_name = EMBEDDINGS_MODEL_NAME #os.environ.get("EMBEDDINGS_MODEL_NAME")
+persist_directory = PERSIST_DIRECTORY #os.environ.get('PERSIST_DIRECTORY')
 
-model_type = os.environ.get('MODEL_TYPE')
-model_path = os.environ.get('MODEL_PATH')
-model_n_ctx = os.environ.get('MODEL_N_CTX')
-model_n_batch = int(os.environ.get('MODEL_N_BATCH',8))
-target_source_chunks = int(os.environ.get('TARGET_SOURCE_CHUNKS',4))
+model_type = MODEL_TYPE #os.environ.get('MODEL_TYPE')
+model_path = MODEL_PATH #os.environ.get('MODEL_PATH')
+model_n_ctx =MODEL_N_CTX # os.environ.get('MODEL_N_CTX')
+model_n_batch = MODEL_N_BATCH #int(os.environ.get('MODEL_N_BATCH',8))
+target_source_chunks = TARGET_SOURCE_CHUNKS #int(os.environ.get('TARGET_SOURCE_CHUNKS',4))
 
 from constants import CHROMA_SETTINGS
 
@@ -39,7 +40,7 @@ def main():
         case _default:
             # raise exception if model_type is not supported
             raise Exception(f"Model type {model_type} is not supported. Please choose one of the following: LlamaCpp, GPT4All")
-        
+
     qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=retriever, return_source_documents= not args.hide_source)
     # Interactive questions and answers
     while True:
